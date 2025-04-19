@@ -20,7 +20,7 @@ div.upgrade, button, footer button{
 }
 
 footer button, .story-quote span, article.settings button, textarea{
-    color: #000000;
+    color: #3800d3;
 }
 
 button:hover, button:not(.chapter-control button){
