@@ -186,6 +186,7 @@ class PCUpgrade extends Upgrade
     }
 }
 
+
 class WisdomUpgrade extends Upgrade
 {
     constructor(name, desc, getPrice, getEffect, cfg)

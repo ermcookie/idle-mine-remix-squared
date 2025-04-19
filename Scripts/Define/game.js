@@ -178,6 +178,7 @@ var game =
                 {index: 213, obj: new MineObject("Sloan Great Wall", 999.999e147, 9.999e147, 1.0101e198, ["#f6e2c4", "#008f11"], 34, {drops:{planetcoin: {chance: 0.7777, amount: 22.222e18}}})},
                 {index: 214, obj: new MineObject("THE UNIVERSE", 99.999e150, 9.999e150, 99.999e198, ["#000000", "#ff0000", "#00ff00", "#0000ff"], 35, {drops:{wisdom: {chance: 1, amount: 1e15}}})}
             ],
+            
         currentMineObject: null,
         mineObjectLevel: 0,
         highestMineObjectLevel: 0,
@@ -262,8 +263,31 @@ var game =
                                 functions.formatThousands(e2);
                         },
                         img: "upgrades/gemwaster.png"
-                    })
+                    }),
+                    activePowersqr: new Upgrade("Active Power^2", "Increase Click Damage",
+                        level => new Decimal(1e9).mul(Decimal.pow(2, level)),
+                        level => new Decimal(1 + 0 * level).mul(Decimal.pow(2, level)),
+                        {
+                            getEffectDisplay: effectDisplayTemplates.numberStandard(2, "x", "", 2),
+                            img: "upgrades/activepower.png"
+                        }),
+                    idlePowersqr: new Upgrade("Idle Power^2", "Increase Idle Click Damage",
+                        level => new Decimal(1e8).mul(Decimal.pow(2, level)),
+                        level => new Decimal(1 + 0 * level).mul(Decimal.pow(2, level)).mul(applyUpgrade(game.gemUpgrades.idlePower)),
+                        {
+                            getEffectDisplay: effectDisplayTemplates.numberStandard(2, "x", "", 2),
+                            img: "upgrades/idlepower.png"
+                        }),
+                        activePowersqr: new Upgrade("Active Power^2", "Increase Click Damage",
+                            level => new Decimal(1e9).mul(Decimal.pow(2, level)),
+                            level => new Decimal(1 + 0 * level).mul(Decimal.pow(2, level)),
+                            {
+                                getEffectDisplay: effectDisplayTemplates.numberStandard(2, "x", "", 2),
+                                img: "upgrades/activepower.png"
+                            }),
             },
+            
+
         gemUpgrades:
             {
                 blacksmith: new GemUpgrade("Blacksmith+", "Make your blacksmith even stronger",

@@ -96,6 +96,7 @@ var functions =
         {
             obj = obj !== undefined ? obj : game.currentMineObject;
             return Decimal.max(0, game.pickaxe.getDamage().mul(applyUpgrade(game.upgrades.activePower)
+                .mul(applyUpgrade(game.upgrades.activePowersqr))
                 .mul(game.powers.data.values[POWER_MINING])
                 .mul(applyUpgrade(game.powers.upgrades.damageBoostUpgrades)))
                 .sub(obj.def)).add(functions.getIdleDPS(obj).mul(applyUpgrade(game.planetCoinUpgrades.activePower)));
@@ -105,6 +106,7 @@ var functions =
             obj = obj !== undefined ? obj : game.currentMineObject;
             return Decimal.max(0, (game.pickaxe.getDamage()
                 .mul(applyUpgrade(game.upgrades.idlePower))
+                .mul(applyUpgrade(game.upgrades.idlePowersqr))
                 .mul(game.powers.data.values[POWER_MINING])
                 .mul(applyUpgrade(game.powers.upgrades.damageBoost))
                 .mul(applyUpgrade(game.powers.upgrades.damageBoostUpgrades)))
@@ -112,7 +114,7 @@ var functions =
         },
         getIdleDPS: function ()
         {
-            return functions.getIdleDamage().mul(applyUpgrade(game.upgrades.idleSpeed));
+            return functions.getIdleDamage().mul((applyUpgrade(game.upgrades.idleSpeed)));
         },
         getMPC: function()
         {
