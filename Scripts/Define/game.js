@@ -272,14 +272,14 @@ var game =
                             img: "upgrades/activepower.png"
                         }),
                     idlePowersqr: new Upgrade("Idle Power^2", "Increase Idle Click Damage",
-                        level => new Decimal(1e8).mul(Decimal.pow(2, level)),
+                        level => new Decimal(1e8).mul(Decimal.pow(3, level)),
                         level => new Decimal(1 + 0 * level).mul(Decimal.pow(2, level)).mul(applyUpgrade(game.gemUpgrades.idlePower)),
                         {
                             getEffectDisplay: effectDisplayTemplates.numberStandard(2, "x", "", 2),
                             img: "upgrades/idlepower.png"
                         }),
                         activePowersqr: new Upgrade("Active Power^2", "Increase Click Damage",
-                            level => new Decimal(1e9).mul(Decimal.pow(2, level)),
+                            level => new Decimal(1e9).mul(Decimal.pow(3, level)),
                             level => new Decimal(1 + 0 * level).mul(Decimal.pow(2, level)),
                             {
                                 getEffectDisplay: effectDisplayTemplates.numberStandard(2, "x", "", 2),
