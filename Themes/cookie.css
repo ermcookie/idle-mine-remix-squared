@@ -28,7 +28,7 @@ button:hover, button:not(.chapter-control button){
 }
 
 footer button:hover, article.settings button:hover, .craft-pickaxe button:hover{
-    background-color: #000000 !important;
+    background-color: #3207f1 !important;
 }
 
 button.level-change:hover{
